@@ -57,16 +57,34 @@ public class UsuarioConverter {
                 .numero(enderecoDTO.getNumero())
                 .build();
     }
+    public Endereco paraEndereco(EnderecoDTO enderecoDTO, Long id_usuario){
+        return Endereco.builder()
+                .cep(enderecoDTO.getCep())
+                .rua(enderecoDTO.getRua())
+                .cidade(enderecoDTO.getCidade())
+                .complemento(enderecoDTO.getComplemento())
+                .estado(enderecoDTO.getEstado())
+                .numero(enderecoDTO.getNumero())
+                .usuario_id(id_usuario)
+                .build();
+    }
     public List<Telefone> paraListTelefone(List<TelefoneDTO> telefoneDTOs){
         return telefoneDTOs.stream().map(this::paraTelefone).toList();
     }
      public Telefone paraTelefone(TelefoneDTO telefoneDTO){
         return Telefone.builder()
-                .id(telefoneDTO.getId())
                 .ddd(telefoneDTO.getDdd())
                 .numero(telefoneDTO.getNumero())
                 .build();
      }
+
+    public Telefone paraTelefone(TelefoneDTO telefoneDTO, Long usuario_id){
+        return Telefone.builder()
+                .ddd(telefoneDTO.getDdd())
+                .numero(telefoneDTO.getNumero())
+                .usuario_id(usuario_id)
+                .build();
+    }
 
      /*-----------------------------------------------------------------------------------------*/
      public UsuarioDTO paraUsuarioDTO(Usuario usuario){
@@ -135,5 +153,7 @@ public class UsuarioConverter {
                  .ddd(dto.getDdd() == null ? entity.getDdd() : dto.getDdd())
                  .build();
     }
+
+
 
 }
