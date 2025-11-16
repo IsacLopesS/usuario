@@ -2,7 +2,6 @@ package com.isac.business;
 
 import com.isac.business.dto.ViaCepDTO;
 import com.isac.infrastructure.clients.ViaCepClient;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
